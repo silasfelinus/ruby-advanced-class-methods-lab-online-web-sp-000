@@ -58,8 +58,6 @@ class Song
     @@all = []
   end
 
-  private
-
   def parse_filename(filename)
     #parse filename and return hash of artist and song title
     artist = filename.split(/" -"/, 2).first
