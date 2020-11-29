@@ -47,7 +47,7 @@ class Song
   end
 
   def self.new_from_filename(filename)
-    self.new_by_name(parse_filename[0])
+    self.new_by_name(self.parse_filename[0])
   end
 
   def self.create_from_filename(filename)
@@ -58,7 +58,7 @@ class Song
     @@all = []
   end
 
-  def parse_filename(filename)
+  def self.parse_filename(filename)
     #parse filename and return hash of artist and song title
     artist = filename.split(/" -"/, 2).first
     song = filename.split(/"- "/, 2).last[0..-4]
