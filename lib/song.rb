@@ -46,8 +46,12 @@ def self.alphabetical
   self.all.sort_by {|song| song.name}
 end
 
-def new_from_filename(filename)
+def self.new_from_filename(filename)
 
+end
+
+def self.create_from_filename(filename)
+  self.create_by_name(filename[0..-4])
 end
 
 def self.destroy_all
