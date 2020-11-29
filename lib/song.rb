@@ -35,7 +35,9 @@ def self.find_by_name(name)
 end
 
 def self.find_or_create_by_name(name)
-  #if true#self.find_by_name(name) == nil
+  if self.find_by_name(name)
+    self.find_by_name(name)
+  end
     self.create_by_name(name)
   end
 
