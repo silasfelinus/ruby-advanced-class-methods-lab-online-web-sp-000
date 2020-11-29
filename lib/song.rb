@@ -48,7 +48,6 @@ class Song
 
   def self.new_from_filename(filename)
     self.new_by_name(parse_filename[0])
-
   end
 
   def self.create_from_filename(filename)
