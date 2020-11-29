@@ -18,45 +18,54 @@ class Song
     new_song = Song.new
     new_song.save
     new_song
-end
+  end
 
   def self.new_by_name(name)
     Song.new(name)
-end
-
- def self.create_by_name(name)
-   new_song = Song.new(name)
-   new_song.save
-   new_song
- end
-
-def self.find_by_name(name)
-  self.all.find{|song| song.name == name}
-end
-
-def self.find_or_create_by_name(name)
-  if self.find_by_name(name)
-    self.find_by_name(name)
-  else
-    self.create_by_name(name)
-  end
   end
 
-def self.alphabetical
-  self.all.sort_by {|song| song.name}
-end
+   def self.create_by_name(name)
+     new_song = Song.new(name)
+     new_song.save
+     new_song
+   end
 
-def self.new_from_filename(filename)
+  def self.find_by_name(name)
+    self.all.find{|song| song.name == name}
+  end
 
-end
+  def self.find_or_create_by_name(name)
+    if self.find_by_name(name)
+      self.find_by_name(name)
+    else
+      self.create_by_name(name)
+    end
+  end
 
-def self.create_from_filename(filename)
-  self.create_by_name(filename[0..-4])
-end
+  def self.alphabetical
+    self.all.sort_by {|song| song.name}
+  end
 
-def self.destroy_all
-  @@all = []
+  def self.new_from_filename(filename)
+    self.new_by_name(parse_filename[0])
 
-end
+  end
+
+  def self.create_from_filename(filename)
+    self.create_by_name(filename[0..-4])
+  end
+
+  def self.destroy_all
+    @@all = []
+  end
+
+  private
+
+  def parse_filename(filename)
+    #parse filename and return hash of artist and song title
+    artist = filename.split(/" -"/, 2).first
+    song = filename.split(/"- "/, 2).last[0..-4]
+    [artist, song]
+  end
 
 end
