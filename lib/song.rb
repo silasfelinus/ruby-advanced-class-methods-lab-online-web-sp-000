@@ -59,10 +59,11 @@ class Song
   end
 
   def self.parse_filename(filename)
-    #parse filename and return hash of artist and song title
-    artist = filename.split(/" -"/, 2).first
-    song = filename.split(/"- "/, 2).last[0..-4]
-    [artist, song]
+    #parse filename and return array of artist and song title
+    parsed_array = []
+    parsed_array << filename.split(/" -"/, 2).first
+    parsed_array << filename.split(/"- "/, 2).last[0..-4]
+    parsed_array
   end
 
 end
