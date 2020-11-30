@@ -47,7 +47,7 @@ class Song
   end
 
   def self.new_from_filename(filename)
-    self.new_by_name(filename.split(/"- "/, 2).last[0..-5])
+    self.new_by_name(filename.split(/-/)[1].strip]
   end
 
   def self.create_from_filename(filename)
@@ -61,7 +61,7 @@ class Song
   def self.parse_filename(filename)
     #parse filename and return array of artist and song title
     parsed_array = []
-    parsed_array << filename.split(/" -"/, 2).first
+    parsed_array << filename.split(/-/)[1].strip]
     parsed_array << filename.split(/"- "/, 2).last[0..-4]
     parsed_array
   end
